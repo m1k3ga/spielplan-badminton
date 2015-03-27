@@ -1,8 +1,6 @@
 ## ToDo ##
  
  = Generell =
-   - Umstellung auf Java-8 (JDK-8 installieren und pom anpassen ;)
-
    - Given-When-Then Tests mit parametrisierten Unit-Tests bzw. Spock :
      Given "Four arbitrary games in a row"
      When "update metrics???"
@@ -12,4 +10,11 @@
  = Metrics =
    - daysPlayedSeason noch nicht berechnet
  
+ 
+ 
+ #  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+ === LOG ===
+ 20150315 first test class
+ 20150321 first push to github
+ 20150321 Move to JDK-8
  

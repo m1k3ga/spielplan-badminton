@@ -9,6 +9,9 @@
     <Logger name="com.foo.Bar" level="trace" additivity="false">
       <AppenderRef ref="Console"/>
     </Logger>
+    <Logger name="org.m1k3ga.badminton" level="debug" additivity="false">
+      <AppenderRef ref="Console"/>
+    </Logger>
     <Root level="error">
       <AppenderRef ref="Console"/>
     </Root>

@@ -27,12 +27,12 @@ public class Team {
 
 	public boolean isValid() {
 		if (null == player_1 || null == player_2) {
-			log.info("Team is not filled");
+			log.debug("Team is not filled");
 			return false;
 		}
 
 		if (player_1 == player_2) {
-			log.info("Same player twice on team");
+			log.debug("Same player twice on team");
 			return false;
 		}
 

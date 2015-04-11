@@ -1,7 +1,6 @@
 package org.m1k3ga.badminton.spielplan
 
 import org.m1k3ga.badminton.Player
-import org.m1k3ga.badminton.PlayerName
 import spock.lang.Specification
 
 /**
@@ -17,7 +16,9 @@ class GameSpec extends Specification {
 
         Team teamA = new Team(player1,player2);
         Team teamB = new Team(player3,player4);
-        Game game = new Game(teamA,teamB);
+        GamePairing gamePairing = new GamePairing(teamA,teamB);
+        Game game = new Game(gamePairing);
+
 
         when:
         game.setScoreTeamA(21);

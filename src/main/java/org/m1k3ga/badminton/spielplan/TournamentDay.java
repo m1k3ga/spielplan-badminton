@@ -20,7 +20,7 @@ public class TournamentDay {
 
   private List<Player> playersForToday = new ArrayList<>();
 
-  private List<Game> gamesPlayedToday = new ArrayList<>();
+  private List<GamePairing> gamesPlayedToday = new ArrayList<>();
 
   /**
    * Add a player for this tournament day
@@ -47,6 +47,11 @@ public class TournamentDay {
    */
   public void gamePlayed(Game game) {
     // TODO add the game to the metrics of the players and the teams
+  }
+
+  public Player getPlayer(int index){
+    // TODO check for valid values
+    return playersForToday.get(index);
   }
 
   public int getNumberOfPlayersForToday() {

@@ -14,8 +14,8 @@ public class CalculateGame {
     this.td = td;
   }
 
-  public Game calculateNewGame() {
-    Game game = null;
+  public GamePairing getNewGamePairing() {
+    GamePairing gamePairing = null;
 
     Player player1_teamA;
     Player player2_teamA;
@@ -31,12 +31,12 @@ public class CalculateGame {
     Team teamB = new Team(player1_teamB, player2_teamB);
 
     try {
-      game = new Game(teamA,teamB);
+      gamePairing = new GamePairing(teamA,teamB);
     } catch (GameException e) {
       e.printStackTrace();
     }
 
-    return game;
+    return gamePairing;
   }
 
   private Player getFourthPlayer() {

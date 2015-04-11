@@ -7,28 +7,34 @@ import java.util.Map;
 
 /**
  * A single player with statistics (metrics)
- *   - games played today
- *   - metrics object
+ * - games played today
+ * - metrics object
  */
 public class Player {
 
-	private final String playerName;
+  private static int counter = 0;
+  private final int id;
 
-	private final Metrics metrics = new Metrics();
+  private final String playerName;
 
-	
-	
-	public Player(String name) {
-		this.playerName = name;
+  private final Metrics metrics = new Metrics();
 
-	}
 
-	public String getPlayerName() {
-		return playerName;
-	}
-	
-	public int getGamesPlayedToday() {
-		return metrics.getGamesPlayedToday();
-	}
+  public Player(String name) {
+    this.playerName = name;
+    this.id = ++counter;
+  }
+
+  public String getPlayerName() {
+    return playerName;
+  }
+
+  public int getPlayerId() {
+    return id;
+  }
+
+  public int getGamesPlayedToday() {
+    return metrics.getGamesPlayedToday();
+  }
 
 }

@@ -14,7 +14,7 @@ public class CalculateGame {
     this.td = td;
   }
 
-  public Game calculateGame() {
+  public Game calculateNewGame() {
     Game game = null;
 
     Player player1_teamA;

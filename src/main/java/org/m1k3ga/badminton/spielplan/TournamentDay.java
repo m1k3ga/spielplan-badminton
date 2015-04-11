@@ -12,14 +12,15 @@ import java.util.List;
  * Here we initialize a tournament day with the list of players for that day
  * Then the teams and the game pairings are calculated
  *
- * m1k3ga
- * 11.04.15.
+ * @author m1k3ga
  */
 public class TournamentDay {
 
   private static final Logger log = LogManager.getLogger(Team.class);
 
   private List<Player> playersForToday = new ArrayList<>();
+
+  private List<Game> gamesPlayedToday = new ArrayList<>();
 
   /**
    * Add a player for this tournament day
@@ -37,10 +38,24 @@ public class TournamentDay {
   }
 
 
+  /**
+   * When a game is finished,
+   * the result needs to be included
+   * in the metrics of the players and the teams
+   *
+   * @param game
+   */
+  public void gamePlayed(Game game) {
+    // TODO add the game to the metrics of the players and the teams
+  }
+
   public int getNumberOfPlayersForToday() {
     return playersForToday.size();
   }
 
+  public int getNumberOfGamesPlayedToday() {
+    return gamesPlayedToday.size();
+  }
 
   /**
    * At least four players should participate in a tournament day
@@ -55,6 +70,13 @@ public class TournamentDay {
     return true;
   }
 
+  /**
+   * Integrity check for a new player
+   * Is the player already enlisted?
+   *
+   * @param player
+   * @return
+   */
   private boolean isValidPlayerForToday(Player player) {
     if (playersForToday.isEmpty()) {
       return true;

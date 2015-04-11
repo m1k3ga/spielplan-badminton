@@ -31,7 +31,9 @@ public class TournamentDayTest {
     td.addPlayer(new Player("Zaheed"));
     td.addPlayer(new Player("Thomas"));
 
+    assertTrue(td.getNumberOfPlayersForToday() == 4);
     assertTrue(td.isValidTournamentDay());
+    assertTrue(td.getNumberOfGamesPlayedToday() == 0);
   }
 
   @Test

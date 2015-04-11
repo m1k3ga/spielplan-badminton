@@ -4,8 +4,11 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.m1k3ga.badminton.Player;
 
+/**
+ * A team consisting of two players
+ *
+ */
 public class Team {
-
 	private static final Logger log = LogManager.getLogger(Team.class);
 	
 	private final Player player_1;
@@ -25,6 +28,12 @@ public class Team {
 		return player_2;
 	}
 
+	/**
+	 * Validation for the team.
+	 * Are there two players on the team?
+	 *
+	 * @return boolean
+	 */
 	public boolean isValid() {
 		if (null == player_1 || null == player_2) {
 			log.debug("Team is not filled");

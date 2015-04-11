@@ -2,6 +2,10 @@ package org.m1k3ga.badminton.spielplan;
 
 import org.m1k3ga.badminton.exception.GameException;
 
+/**
+ * A game of two teams with score
+ *
+ */
 public class Game {
 
 	private final Team teamA;

@@ -8,6 +8,9 @@ import org.junit.Test;
 import org.m1k3ga.badminton.Player;
 import org.m1k3ga.badminton.PlayerName;
 
+/**
+ * Test for a team configuration
+ */
 public class TeamTest {
 
 	private Team team;
@@ -17,8 +20,8 @@ public class TeamTest {
 	
 	@Before
 	public void setup() {
-		bue = new Player(PlayerName.BUE);
-		david = new Player(PlayerName.DAVID);
+		bue = new Player("Bü");
+		david = new Player("David");
 	}
 	
 	@Test

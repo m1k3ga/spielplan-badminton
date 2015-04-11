@@ -1,5 +1,10 @@
 package org.m1k3ga.badminton.spielplan.metrics;
 
+/**
+ * Metrics for a player
+ *   - number of games played on a day
+ *   - number of days the player played games
+ */
 public class Metrics {
 
 	private int gamesPlayedSeason = 0;
@@ -29,6 +34,5 @@ public class Metrics {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
 	
 }

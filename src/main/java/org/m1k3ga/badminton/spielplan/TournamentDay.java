@@ -37,6 +37,9 @@ public class TournamentDay {
     }
   }
 
+  public int getNumberOfPlayers() {
+    return playersForToday.size();
+  }
 
   /**
    * When a game is finished,
@@ -47,6 +50,10 @@ public class TournamentDay {
    */
   public void gamePlayed(Game game) {
     // TODO add the game to the metrics of the players and the teams
+    Team teamA = game.getTeamA();
+//    Team teamB = game.getTeamB();
+    Player player = teamA.getPlayer_1();
+    player.gamePlayed();
   }
 
   public Player getPlayer(int index){

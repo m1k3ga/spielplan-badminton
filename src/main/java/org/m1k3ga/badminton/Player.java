@@ -25,16 +25,21 @@ public class Player {
     this.id = ++counter;
   }
 
+  public void gamePlayed() {
+    metrics.gamePlayed();
+  }
+
+  public int getGamesPlayedToday() {
+    return metrics.getGamesPlayedToday();
+  }
+
+
   public String getPlayerName() {
     return playerName;
   }
 
   public int getPlayerId() {
     return id;
-  }
-
-  public int getGamesPlayedToday() {
-    return metrics.getGamesPlayedToday();
   }
 
 }

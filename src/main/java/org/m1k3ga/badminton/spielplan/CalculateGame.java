@@ -57,4 +57,17 @@ public class CalculateGame {
     return null;
   }
 
+  public void calculateAllTeamPairings(){
+    // TODO from the list of players,
+    // calculate all possible pairings
+    Player player1, player2;
+    Team team;
+    for (int i=0;i< td.getNumberOfPlayers(); i++) {
+      player1 = td.getPlayer(i);
+      for (int j=i+1;j<td.getNumberOfPlayers(); j++) {
+        player2 = td.getPlayer(j);
+        team = new Team(player1,player2);
+      }
+    }
+  }
 }

@@ -15,15 +15,17 @@ class FourPlayerTournamentSpec extends Specification {
         td.addPlayer(new Player("Zaheed"));
         td.addPlayer(new Player("Thomas"));
 
-        when: "two games are played"
+        when: "One game is played"
         CalculateGame cg = new CalculateGame(td);
         GamePairing gp1 = cg.getNewGamePairing();
         Game game = new Game(gp1);
         td.gamePlayed(game);
 
-        then: "each player should have played two games"
+        then: "Each player should have played one game"
         Player player1 = td.getPlayer(0);
-        player1.gamesPlayedToday == 2;
+        player1.gamesPlayedToday == 1;
 
+        Player player2 = td.getPlayer(1);
+        player2.gamesPlayedToday == 1;
     }
 }

@@ -16,6 +16,14 @@ public class Game {
     this.gamePairing = gamePairing;
   }
 
+  public Team getTeamA() {
+    return gamePairing.getTeamA();
+  }
+
+  public Team getTeamB() {
+    return gamePairing.getTeamB();
+  }
+
   public void setScoreTeamA(int scoreTeamA) {
     this.scoreTeamA = scoreTeamA;
   }

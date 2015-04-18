@@ -19,18 +19,20 @@ import java.util.Random;
  */
 public class CalculateGame {
 
-  private static final Logger log = LogManager.getLogger(TournamentDay.class);
+  private static final Logger log = LogManager.getLogger(CalculateGame.class);
 
   private TournamentDay td;
 
-  private List<Team> possibleTeams = new ArrayList<>();
+  private List<Team> possibleTeams;
 
   public CalculateGame(TournamentDay td) {
+    log.info("Calculate new game");
     this.td = td;
-    calculateAllTeamPairings();
   }
 
   public GamePairing getNewGamePairing() {
+    log.info("New game pairing. New pairing list");
+    calculateAllTeamPairings();
     GamePairing gamePairing = null;
     Team teamA = pickTeamA();
     Team teamB = pickTeamB();
@@ -46,6 +48,7 @@ public class CalculateGame {
 
   private void calculateAllTeamPairings() {
     log.info("Calculate all team pairings");
+    possibleTeams = new ArrayList<>();
     Player player1, player2;
     Team team;
     for (int i = 0; i < td.getNumberOfPlayers(); i++) {
@@ -72,23 +75,25 @@ public class CalculateGame {
 
 
   private Team pickTeamA() {
+    log.info("Pick team A");
     Random random = new Random();
     int teamNumber = random.nextInt(possibleTeams.size());
     Team team = possibleTeams.get(teamNumber);
+    log.info( "Picked team A: " + team.toString());
     possibleTeams.remove(teamNumber);
     cleanUpRemainingPairings(team);
-    log.info( "Team A: " + team.toString());
 
     return team;
   }
 
   private Team pickTeamB() {
+    log.info("Pick team B");
     Random random = new Random();
     int teamNumber = random.nextInt(possibleTeams.size());
     Team team = possibleTeams.get(teamNumber);
+    log.info("Picked team B: " + team.toString());
     possibleTeams.remove(teamNumber);
     cleanUpRemainingPairings(team);
-    log.info("Team B: " + team.toString());
 
     return team;
   }

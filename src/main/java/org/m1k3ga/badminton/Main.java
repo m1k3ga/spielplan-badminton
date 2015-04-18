@@ -1,6 +1,8 @@
 package org.m1k3ga.badminton;
 
+import org.m1k3ga.badminton.exception.GameException;
 import org.m1k3ga.badminton.spielplan.CalculateGame;
+import org.m1k3ga.badminton.spielplan.Game;
 import org.m1k3ga.badminton.spielplan.GamePairing;
 import org.m1k3ga.badminton.spielplan.TournamentDay;
 
@@ -8,7 +10,7 @@ import org.m1k3ga.badminton.spielplan.TournamentDay;
  * Created by m1k3ga on 18.04.15.
  */
 public class Main {
-  public static void main(String args[]) {
+  public static void main(String args[]) throws GameException {
 
     TournamentDay td = new TournamentDay();
     td.addPlayer(new Player("Bü"));
@@ -20,6 +22,10 @@ public class Main {
 //    td.addPlayer(new Player("Zaheed"));
     CalculateGame calc = new CalculateGame(td);
     GamePairing gp = calc.getNewGamePairing();
-    System.out.println(gp.toString());
+    System.out.println("Calculated game pairing: " + gp.toString());
+    Game game = new Game(gp);
+    game.setScoreTeamA(21);
+    game.setScoreTeamB(18);
+    td.gamePlayed(game);
   }
 }

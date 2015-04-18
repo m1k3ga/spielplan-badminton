@@ -23,7 +23,8 @@ public class TournamentDay {
 
   private List<Player> playersForToday = new ArrayList<>();
 
-  private List<GamePairing> gamesPlayedToday = new ArrayList<>();
+  private List<GamePairing> gamePairingsToday = new ArrayList<>();
+  private List<Game> gamesToday = new ArrayList<>();
 
   /**
    * Add a player for this tournament day
@@ -52,11 +53,15 @@ public class TournamentDay {
    * @param game
    */
   public void gamePlayed(Game game) {
-    // TODO add the game to the metrics of the players and the teams
+    log.info("game played");
+    gamesToday.add(game);
     Team teamA = game.getTeamA();
-//    Team teamB = game.getTeamB();
-    Player player = teamA.getPlayer_1();
-    player.gamePlayed();
+    teamA.getPlayer_1().gamePlayed();
+    teamA.getPlayer_2().gamePlayed();
+
+    Team teamB = game.getTeamB();
+    teamB.getPlayer_1().gamePlayed();
+    teamB.getPlayer_2().gamePlayed();
   }
 
   public Player getPlayer(int index){
@@ -64,12 +69,21 @@ public class TournamentDay {
     return playersForToday.get(index);
   }
 
+  public Game getLastGame(){
+    int gamesTodayPlayed = gamesToday.size();
+    if (gamesTodayPlayed > 0) {
+      return gamesToday.get(gamesToday.size() - 1);
+    }
+
+    return null;
+  }
+
   public int getNumberOfPlayersForToday() {
     return playersForToday.size();
   }
 
   public int getNumberOfGamesPlayedToday() {
-    return gamesPlayedToday.size();
+    return gamePairingsToday.size();
   }
 
   /**

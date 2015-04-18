@@ -12,11 +12,14 @@ import java.util.List;
  * Here we initialize a tournament day with the list of players for that day
  * Then the teams and the game pairings are calculated
  *
+ * Usage:
+ *   - add players for a day
+ *   - games to play or games played are used in other classes
  * @author m1k3ga
  */
 public class TournamentDay {
 
-  private static final Logger log = LogManager.getLogger(Team.class);
+  private static final Logger log = LogManager.getLogger(TournamentDay.class);
 
   private List<Player> playersForToday = new ArrayList<>();
 

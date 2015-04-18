@@ -38,8 +38,11 @@ public class Player {
     return playerName;
   }
 
-  public int getPlayerId() {
-    return id;
-  }
+  public boolean isEqual(Player player) {
+    if (  player.getPlayerName().equalsIgnoreCase(playerName) ) {
+      return true;
+    }
 
+    return false;
+  }
 }

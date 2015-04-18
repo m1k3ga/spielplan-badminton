@@ -1,6 +1,7 @@
 ## ToDo ##
  
  = Generell =
+   - log4j durch logback ersetzen
    - Berechnung einer neuen Spielpaarung über den TournamentDay und CalculateGame
 
    - Given-When-Then Tests mit parametrisierten Unit-Tests bzw. Spock :

@@ -118,4 +118,7 @@ public class TournamentDay {
     return true;
   }
 
+  public List<Player> getPlayers() {
+    return playersForToday;
+  }
 }

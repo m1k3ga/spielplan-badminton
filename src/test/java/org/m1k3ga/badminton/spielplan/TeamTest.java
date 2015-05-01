@@ -1,12 +1,11 @@
 package org.m1k3ga.badminton.spielplan;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
 import org.junit.Before;
 import org.junit.Test;
 import org.m1k3ga.badminton.Player;
-import org.m1k3ga.badminton.PlayerName;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Test for a team configuration

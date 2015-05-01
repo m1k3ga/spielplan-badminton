@@ -7,6 +7,7 @@ import spock.lang.Specification
  * Created by m1k3ga on 11.04.15.
  */
 class FivePlayerTournamentSpec extends Specification {
+
     def "A new tournament starts"() {
         given:
         TournamentDay td = new TournamentDay();

@@ -18,7 +18,7 @@ public class Main {
     td.addPlayer(new Player("David"));
     td.addPlayer(new Player("Ingo"));
     td.addPlayer(new Player("Mike"));
-    td.addPlayer(new Player("Sandro"));
+//    td.addPlayer(new Player("Sandro"));
 //    td.addPlayer(new Player("Thomas"));
 //    td.addPlayer(new Player("Zaheed"));
 

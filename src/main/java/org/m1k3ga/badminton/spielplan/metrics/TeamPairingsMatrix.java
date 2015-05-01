@@ -7,7 +7,12 @@ import org.m1k3ga.badminton.Player;
 import java.util.List;
 
 /**
- * Created by m1k3ga on 21.04.15.
+ * The team pairing matrix holds the number of games a player has played with another player
+ * The x coordinate is the first player,
+ * the y coordinate the second player
+ * the value of the (x,y) combination is the number of games the two players have played together
+ *
+ * The coordinates are the ids of the player
  */
 public class TeamPairingsMatrix {
   private static final Logger log = LogManager.getLogger(TeamPairingsMatrix.class);
@@ -16,15 +21,18 @@ public class TeamPairingsMatrix {
   private final int size;
 
   public TeamPairingsMatrix(List<Player> playersForToday) {
-    buildMatrix(playersForToday);
     size = playersForToday.size();
+    buildMatrix(playersForToday);
   }
 
   private void buildMatrix(List<Player> players) {
     teamPairings = new String[size][size];
+    log.info("Build team pairings matrix with '" + size + "' players");
+
     for (int i=0; i<size;i++) {
       String playerNameX = (players.get(i)).getPlayerName();
       teamPairings[i][i] = playerNameX;
+
       for (int j=1;j<size;j++) {
         String playerNameY = (players.get(j)).getPlayerName();
         teamPairings[i][j] = playerNameY;

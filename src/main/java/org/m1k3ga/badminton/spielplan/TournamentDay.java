@@ -3,28 +3,32 @@ package org.m1k3ga.badminton.spielplan;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.m1k3ga.badminton.Player;
+import org.m1k3ga.badminton.spielplan.metrics.TeamPairingMatrix;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The base class for calculating team pairings
+ * The central entry for a day of badminton
+ * We govern the metrics for the games, players and teams.
+ * All information are gathered here
+ *
  * Here we initialize a tournament day with the list of players for that day
  * Then the teams and the game pairings are calculated
  *
  * Usage:
  *   - add players for a day
- *   - games to play or games played are used in other classes
+ *   - play game(s)
+ *   - getting a new game pairing is outside the scope of this class
  * @author m1k3ga
  */
 public class TournamentDay {
-
   private static final Logger log = LogManager.getLogger(TournamentDay.class);
 
-  private List<Player> playersForToday = new ArrayList<>();
+  private final List<Player> playersForToday = new ArrayList<>();
+  private final List<Game> gamesToday = new ArrayList<>();
 
-  private List<GamePairing> gamePairingsToday = new ArrayList<>();
-  private List<Game> gamesToday = new ArrayList<>();
+  private final TournamentDayEvaluation eval = new TournamentDayEvaluation();
 
   /**
    * Add a player for this tournament day
@@ -54,18 +58,33 @@ public class TournamentDay {
    */
   public void gamePlayed(Game game) {
     log.info("game played");
+
     gamesToday.add(game);
+
     Team teamA = game.getTeamA();
+    eval.gamePlayed(teamA);
+
     teamA.getPlayer_1().gamePlayed();
     teamA.getPlayer_2().gamePlayed();
 
     Team teamB = game.getTeamB();
+    eval.gamePlayed(teamB);
+
     teamB.getPlayer_1().gamePlayed();
     teamB.getPlayer_2().gamePlayed();
   }
 
+  /**
+   * Get a player from the enlisted ones of today
+   *
+   * @param index
+   * @return
+   */
   public Player getPlayer(int index){
-    // TODO check for valid values
+    if (index < 0 || index >= playersForToday.size()) {
+      return null;
+    }
+
     return playersForToday.get(index);
   }
 
@@ -83,7 +102,7 @@ public class TournamentDay {
   }
 
   public int getNumberOfGamesPlayedToday() {
-    return gamePairingsToday.size();
+    return gamesToday.size();
   }
 
   /**

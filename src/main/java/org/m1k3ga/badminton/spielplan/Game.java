@@ -5,6 +5,12 @@ import org.apache.logging.log4j.Logger;
 import org.m1k3ga.badminton.exception.GameException;
 
 /**
+ * Create a game from a game pairing.
+ * Enrich the pairing with the result of the game
+ * Validate the result.
+ *
+ * No business logic is done here
+ *
  * Created by m1k3ga on 11.04.15.
  */
 public class Game {
@@ -12,7 +18,7 @@ public class Game {
   private int scoreTeamA = 0;
   private int scoreTeamB = 0;
 
-  private GamePairing gamePairing;
+  final private GamePairing gamePairing;
 
   public Game(GamePairing gamePairing) throws GameException {
     this.gamePairing = gamePairing;

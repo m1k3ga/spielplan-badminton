@@ -3,6 +3,7 @@ package org.m1k3ga.badminton.spielplan.metrics;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.m1k3ga.badminton.Player;
+import org.m1k3ga.badminton.util.KeyHandling;
 
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +31,7 @@ public class CounterMatrix implements TeamPairingMatrix {
    * @param id2
    */
   public void incrementPair(int id1, int id2) {
-    String key = getKey(id1, id2);
+    String key = KeyHandling.getKey(id1, id2);
 
     if (null == matrix.get(key)) {
       matrix.put(key, 1);
@@ -52,7 +53,7 @@ public class CounterMatrix implements TeamPairingMatrix {
    * @return
    */
   public int getCount(int id1, int id2) {
-    String key = getKey(id1, id2);
+    String key = KeyHandling.getKey(id1, id2);
 
     if (null == matrix.get(key)) {
       log.info("No entry found for (" + key + ")");
@@ -62,31 +63,5 @@ public class CounterMatrix implements TeamPairingMatrix {
     return matrix.get(key);
   }
 
-
-  /**
-   * Create an unique key for the hash map.
-   * The key evaluation is commutative:
-   * (id1,id2) == (id2,id1)
-   *
-   * @param id1
-   * @param id2
-   * @return evaluated key
-   */
-  private String getKey(int id1, int id2) {
-    if (id1 > id2) {
-      int tmp = id1;
-      id1 = id2;
-      id2 = tmp;
-      log.info("Switched ids (" + id1 + "," + id2 + ")");
-    }
-
-    StringBuilder sb = new StringBuilder();
-    sb.append(String.valueOf(id1));
-    sb.append("_");
-    sb.append(String.valueOf(id2));
-
-    log.debug("Key: (" + sb.toString() + ")");
-    return sb.toString();
-  }
 
 }

@@ -25,6 +25,7 @@ public class Player {
 
   public Player(String name) {
     this.playerName = name;
+    // TODO This is only as long as there is no persistance
     this.id = ++counter;
   }
 
@@ -48,5 +49,9 @@ public class Player {
     }
 
     return false;
+  }
+
+  public int getId() {
+    return id;
   }
 }

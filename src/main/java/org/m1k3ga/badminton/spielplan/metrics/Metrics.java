@@ -12,14 +12,17 @@ public class Metrics {
 
 	private int gamesPlayedToday = 0;
 	private int score = 0;
-	
+
+
 	public int getGamesPlayedSeason() {
 		return gamesPlayedSeason;
 	}
+
 	public int getGamesPlayedToday() {
 		return gamesPlayedToday;
 	}
-	public int daysPlayedSeson() {
+
+	public int daysPlayedSeason() {
 		return daysPlayedSeason;
 	}
 
@@ -31,6 +34,7 @@ public class Metrics {
 	public int getScore() {
 		return score;
 	}
+
 	public void setScore(int score) {
 		this.score = score;
 	}

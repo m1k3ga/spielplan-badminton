@@ -1,5 +1,6 @@
 package org.m1k3ga.badminton.spielplan;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
 import org.junit.Test;
 import org.m1k3ga.badminton.Player;
 import org.m1k3ga.badminton.exception.GameException;

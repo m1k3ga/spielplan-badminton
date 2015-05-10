@@ -77,14 +77,21 @@ public class TournamentDay {
     gamesToday.add(game);
 
     Team teamA = game.getTeamA();
+
+    // Add the team to the TeamPairingMatrix
     eval.gamePlayed(teamA);
 
+    // Increment counter for games played today/season
     teamA.getPlayer_1().gamePlayed();
     teamA.getPlayer_2().gamePlayed();
 
+
     Team teamB = game.getTeamB();
+
+    // Add the team to the TeamPairingMatrix
     eval.gamePlayed(teamB);
 
+    // Increment counter for games played today/season
     teamB.getPlayer_1().gamePlayed();
     teamB.getPlayer_2().gamePlayed();
   }

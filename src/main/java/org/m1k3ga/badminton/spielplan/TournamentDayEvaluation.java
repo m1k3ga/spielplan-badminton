@@ -10,6 +10,11 @@ public class TournamentDayEvaluation {
 
   final private TeamPairingMatrix tpm = new CounterMatrix();
 
+  /**
+   * Add one more game for that team pairing to the matrix
+   *
+   * @param team
+   */
   public void gamePlayed(Team team) {
     final int idPlayer1 = team.getPlayer_1().getId();
     final int idPlayer2 = team.getPlayer_2().getId();

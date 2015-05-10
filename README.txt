@@ -3,8 +3,7 @@
 = Generell =
   - Unit Test für CalculateGame fehlt!
   - FivePlayerTournamentTest is auf @Ignore gestellt
-  - Spock tests gehen nicht mehr! (Ging jetzt nach Neustart von IDEA)
-  - Merken, wer mit wem gespielt hat in der TeamPairingsMatrix
+  - Spock tests gehen nicht mehr! (Werden auf ignore gesettz und ignoriert wenn über test/java->run alltests)
 
   - DerbyDB für Persistenz
   - Die Player_Id wird aktuell immer neu gesetzt (counter++)
@@ -25,6 +24,7 @@
 #  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 === LOG ===
 20150510 Introduced pickPoints as basis for picking players and teams
+         Assure that each team pairing is saved in the TeamPairingMatrix
 20150509 TeamPairingMatrix as HashMap (concatenated ids as key)
          Team administration in CalculateGame switched to HashMap with key from ArrayList
 20150501 5 players test

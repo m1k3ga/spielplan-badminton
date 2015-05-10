@@ -150,7 +150,7 @@ public class CalculateGame {
     StringBuffer sb = new StringBuffer();
     for (int i = 0; i < possibleTeams.size(); i++) {
       Team team = possibleTeams.get(i);
-      sb.append("(" + team.getPlayer_1().getPlayerName() + "/" + team.getPlayer_2().getPlayerName() + "),");
+      sb.append("(" + team.getPlayer_1().getName() + "/" + team.getPlayer_2().getName() + "),");
     }
 
     String logEvent = (possibleTeams.size() == 0) ? "Keine Teams übring" : "All Teams: " + sb.toString();

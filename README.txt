@@ -1,8 +1,11 @@
 ## ToDo ##
  
 = Generell =
-  - Punktevergabe für Spieler mit weniger Spielen (10P pro Spiel weniger wie der Meistspielende)
+  - Unit Test für CalculateGame fehlt!
+  - FivePlayerTournamentTest is auf @Ignore gestellt
+  - Spock tests gehen nicht mehr! (Ging jetzt nach Neustart von IDEA)
   - Merken, wer mit wem gespielt hat in der TeamPairingsMatrix
+
   - DerbyDB für Persistenz
   - Die Player_Id wird aktuell immer neu gesetzt (counter++)
     In DB durch DB_id ersetzen
@@ -19,8 +22,9 @@
  
  
  
- #  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
- === LOG ===
+#  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+=== LOG ===
+20150510 Introduced pickPoints as basis for picking players and teams
 20150509 TeamPairingMatrix as HashMap (concatenated ids as key)
          Team administration in CalculateGame switched to HashMap with key from ArrayList
 20150501 5 players test

@@ -49,7 +49,7 @@ public class Team {
 	}
 	
 	public String toString() {
-		return "(" + player_1.getPlayerName() + " / " + player_2.getPlayerName() + ")";
+		return "(" + player_1.getName() + " / " + player_2.getName() + ")";
 	}
 	
 }

@@ -3,7 +3,6 @@ package org.m1k3ga.badminton.spielplan;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.m1k3ga.badminton.Player;
-import org.m1k3ga.badminton.spielplan.metrics.TeamPairingMatrix;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +24,8 @@ import java.util.List;
 public class TournamentDay {
   private static final Logger log = LogManager.getLogger(TournamentDay.class);
 
+  public static final int PICK_POINT_WEIGHT_FOR_NUMBER_OF_GAMES = 10;
+
   private final List<Player> playersForToday = new ArrayList<>();
   private final List<Game> gamesToday = new ArrayList<>();
 
@@ -41,9 +42,23 @@ public class TournamentDay {
       log.warn("Player already added. Ignoring");
     } else {
       playersForToday.add(player);
-      log.info("Added player '"+player.getPlayerName()+"'");
+      log.info("Added player '"+player.getName()+"'");
     }
   }
+
+
+  public void calculatePickPointsForNumberOfGamesForEachPlayer() {
+    Player player;
+    int addPoints = 0;
+
+    for ( int i=0;i<playersForToday.size();i++) {
+      player = getPlayer(i);
+      addPoints = (getNumberOfGamesPlayedToday()-player.getGamesPlayedToday()) * PICK_POINT_WEIGHT_FOR_NUMBER_OF_GAMES;
+      log.info("Player '"+player.getName()+"' gets '"+addPoints+"' pick points for the next game");
+      player.addPickPoints(addPoints);
+    }
+  }
+
 
   public int getNumberOfPlayers() {
     return playersForToday.size();

@@ -4,9 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.m1k3ga.badminton.spielplan.metrics.Metrics;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * A single player with statistics (metrics)
  * - games played today
@@ -38,13 +35,24 @@ public class Player {
     return metrics.getGamesPlayedToday();
   }
 
+  /**
+   * Get the current pickPoints from the Metrics
+   * @return
+   */
+  public int getPickPoints() {
+    return metrics.getPickPoints();
+  }
 
-  public String getPlayerName() {
+  public void addPickPoints(int points) {
+    metrics.addPickPoints(points);
+  }
+
+  public String getName() {
     return playerName;
   }
 
   public boolean isEqual(Player player) {
-    if (  player.getPlayerName().equalsIgnoreCase(playerName) ) {
+    if (  player.getName().equalsIgnoreCase(playerName) ) {
       return true;
     }
 

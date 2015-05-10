@@ -13,6 +13,9 @@ public class Metrics {
 	private int gamesPlayedToday = 0;
 	private int score = 0;
 
+	/** This value is used to pick a player based on the number of games played */
+	private int pickPoints = 0;
+
 
 	public int getGamesPlayedSeason() {
 		return gamesPlayedSeason;
@@ -38,5 +41,16 @@ public class Metrics {
 	public void setScore(int score) {
 		this.score = score;
 	}
-	
+
+	public void addPickPoints(int pickPoints) {
+		this.pickPoints += pickPoints;
+	}
+
+	public int getPickPoints() {
+		return pickPoints;
+	}
+
+	public void resetPickPoints() {
+		pickPoints = 0;
+	}
 }

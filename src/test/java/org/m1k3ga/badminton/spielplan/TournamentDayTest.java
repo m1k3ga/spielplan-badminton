@@ -88,9 +88,10 @@ public class TournamentDayTest {
     // GIVEN :
     //    A tournament day with five players
     TournamentDay td = initTournamentDayWithFourPlayers();
-    td.addPlayer(new Player("David"));
-    td.addPlayer(new Player("Thomas"));
+    td.addPlayer(new Player("David"));       // => 4
+    td.addPlayer(new Player("Thomas"));      // => 5
 
+    // FIRST GAME
     // Pick the teams for the first game
     Team teamA = new Team(td.getPlayer(0), td.getPlayer(1));
     Team teamB = new Team(td.getPlayer(2), td.getPlayer(3));
@@ -99,6 +100,7 @@ public class TournamentDayTest {
     Game game = new Game(gp);
     td.gamePlayed(game);
 
+    // SECOND GAME
     // Pick the teams for the second game
     teamA = new Team(td.getPlayer(0), td.getPlayer(2));
     teamB = new Team(td.getPlayer(3), td.getPlayer(4));
@@ -133,10 +135,10 @@ public class TournamentDayTest {
 
   private TournamentDay initTournamentDayWithFourPlayers() {
     TournamentDay td = new TournamentDay();
-    td.addPlayer(new Player("Bü"));
-    td.addPlayer(new Player("Ingo"));
-    td.addPlayer(new Player("Zaheed"));
-    td.addPlayer(new Player("Thomas"));
+    td.addPlayer(new Player("Bü"));       // => 0
+    td.addPlayer(new Player("Ingo"));     // => 1
+    td.addPlayer(new Player("Zaheed"));   // => 2
+    td.addPlayer(new Player("Thomas"));   // => 3
 
     return td;
   }

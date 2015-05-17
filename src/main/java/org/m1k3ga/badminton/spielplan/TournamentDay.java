@@ -110,6 +110,10 @@ public class TournamentDay {
     return playersForToday.get(index);
   }
 
+  public List<Player> getPlayersForToday() {
+    return playersForToday;
+  }
+
   public Game getLastGame(){
     int gamesTodayPlayed = gamesToday.size();
     if (gamesTodayPlayed > 0) {

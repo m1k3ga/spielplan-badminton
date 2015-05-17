@@ -1,7 +1,12 @@
 ## ToDo ##
  
 = Generell =
-  - Unit Test für CalculateGame fehlt!
+  - NEXT STEPS: teamPickPoints einführen, pickTeamB auch auf pickPoints basieren lassen
+
+  - CalculateGame -> pickTeamA wählt nach pickPoint für einzelne Spieler aus.
+    ToDo: Wähle auch nach PickPoints für die Teams (punkte für spieler 1 + 2 )
+  - Gleiches für pickTeamB. Wird aktuell das erste Team aus der verbleibenden Liste gewählt
+
   - FivePlayerTournamentTest is auf @Ignore gestellt
   - Spock tests gehen nicht mehr! (Werden auf ignore gesettz und ignoriert wenn über test/java->run alltests)
 
@@ -23,6 +28,9 @@
  
 #  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 === LOG ===
+20150517 Added Unit test for CalculateGame
+         pickTeamA now picks the two players of the team based on the pickPoints for each player (highest)
+20150515 Added Mockito. Not yet used (implicit class instantiation)
 20150510 Introduced pickPoints as basis for picking players and teams
          Assure that each team pairing is saved in the TeamPairingMatrix
 20150509 TeamPairingMatrix as HashMap (concatenated ids as key)

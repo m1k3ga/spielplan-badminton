@@ -34,6 +34,8 @@ public class CalculateGame {
     this.td = td;
   }
 
+
+
   /**
    * Main function for evaluating a new game pairings
    * The two teams are picked by separate methods
@@ -57,6 +59,7 @@ public class CalculateGame {
 
     return gamePairing;
   }
+
 
 
   private void calculateAllTeamPairings() {
@@ -85,27 +88,31 @@ public class CalculateGame {
    */
   private Team pickTeamA() {
     log.info("Pick team A");
-    Random random = new Random();
-    int teamNumber = random.nextInt(possibleTeams.size());
-    Team team = possibleTeams.get(teamNumber);
+
+    td.calculatePickPointsForNumberOfGamesForEachPlayer();
+    // Pick the first two players with the highes pickPoints
+    List<Player> players = td.getPlayersForToday();
+    Collections.sort(players);
+
+    Player player1 = players.get(0);
+    log.info("Player 1: '"+player1.getName()+"'");
+    Player player2 = players.get(1);
+    log.info("Player 2: '"+player2.getName()+"'");
+    Team team = new Team(player1,player2);
     log.info("Picked team A: " + team.toString());
-    possibleTeams.remove(teamNumber);
     cleanUpRemainingPairings(team);
 
-    return team;
+   return team;
   }
 
 
   private Team pickTeamB() {
     log.info("Pick team B");
-    Random random = new Random();
-    int teamNumber = random.nextInt(possibleTeams.size());
-    Team team = possibleTeams.get(teamNumber);
-    log.info("Picked team B: " + team.toString());
-    possibleTeams.remove(teamNumber);
+    final Set<String> keySet = possibleTeams.keySet();
+    final String key = keySet.iterator().next();
 
-    // TODO Is the second cleanup necessary?
-    cleanUpRemainingPairings(team);
+    Team team = possibleTeams.get(key);
+    log.info("Picked team B: " + team.toString());
 
     return team;
   }
@@ -121,13 +128,13 @@ public class CalculateGame {
    */
   private void cleanUpRemainingPairings(Team team) {
     log.info("Cleaning up...");
-    Map<String,Team> remainingPossibleTeams = new HashMap<>();
-    Player playerA1 = team.getPlayer_1();
-    Player playerA2 = team.getPlayer_2();
+    final Map<String,Team> remainingPossibleTeams = new HashMap<>();
+    final Player playerA1 = team.getPlayer_1();
+    final Player playerA2 = team.getPlayer_2();
 
     Player playerB1, playerB2;
     Team teamToCheck;
-    Set<String> teamKeys = possibleTeams.keySet();
+    final Set<String> teamKeys = possibleTeams.keySet();
 
     for (String key : teamKeys) {
       teamToCheck = possibleTeams.get(key);
@@ -135,7 +142,7 @@ public class CalculateGame {
       playerB2 = teamToCheck.getPlayer_2();
 
       if (!(playerA1.isEqual(playerB1) || playerA1.isEqual(playerB2) || playerA2.isEqual(playerB1) || playerA2.isEqual(playerB2))) {
-        log.debug("Adding valid team: (" + playerB1 + " + " + playerB2);
+        log.debug("Adding valid team: (" + playerB1.getName() + " + " + playerB2.getName());
         String keyToAdd = KeyHandling.getKey(playerB1.getId(),playerB2.getId());
         remainingPossibleTeams.put(keyToAdd,teamToCheck);
       }
@@ -148,8 +155,11 @@ public class CalculateGame {
 
   public void printAllTeams() {
     StringBuffer sb = new StringBuffer();
-    for (int i = 0; i < possibleTeams.size(); i++) {
-      Team team = possibleTeams.get(i);
+    Set<String> keySet = possibleTeams.keySet();
+
+    sb.append("#  -  -  -  All remaining teams  -  -  -");
+    for (String key : keySet) {
+      Team team = possibleTeams.get(key);
       sb.append("(" + team.getPlayer_1().getName() + "/" + team.getPlayer_2().getName() + "),");
     }
 

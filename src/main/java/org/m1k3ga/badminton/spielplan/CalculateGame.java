@@ -109,6 +109,7 @@ public class CalculateGame {
   private Team pickTeamB() {
     log.info("Pick team B");
     final Set<String> keySet = possibleTeams.keySet();
+    // TODO Get not just the first in the list
     final String key = keySet.iterator().next();
 
     Team team = possibleTeams.get(key);

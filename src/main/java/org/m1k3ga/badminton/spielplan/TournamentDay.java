@@ -9,16 +9,18 @@ import java.util.List;
 
 /**
  * The central entry for a day of badminton
- * We govern the metrics for the games, players and teams.
+ * We maintain the metrics for the games, players and teams.
  * All information are gathered here
  *
  * Here we initialize a tournament day with the list of players for that day
- * Then the teams and the game pairings are calculated
+ * Then the teams and the game pairings can be calculated
  *
  * Usage:
- *   - add players for a day
- *   - play game(s)
- *   - getting a new game pairing is outside the scope of this class
+ *   * add players for a day
+ *   * play game(s)
+ *
+ *   * getting a new game pairing is outside the scope of this class
+ *
  * @author m1k3ga
  */
 public class TournamentDay {
@@ -30,6 +32,21 @@ public class TournamentDay {
   private final List<Game> gamesToday = new ArrayList<>();
 
   private final TournamentDayEvaluation eval = new TournamentDayEvaluation();
+
+  //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  // Methods for the tournament day
+  //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+
+  public int getNumberOfPlayers() {
+    return playersForToday.size();
+  }
+
+
+
+
+  //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  // Methods for the players
+  //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
   /**
    * Add a player for this tournament day
@@ -47,22 +64,36 @@ public class TournamentDay {
   }
 
 
-  public void calculatePickPointsForNumberOfGamesForEachPlayer() {
-    Player player;
-    int addPoints = 0;
 
-    for ( int i=0;i<playersForToday.size();i++) {
-      player = getPlayer(i);
-      addPoints = (getNumberOfGamesPlayedToday()-player.getGamesPlayedToday()) * PICK_POINT_WEIGHT_FOR_NUMBER_OF_GAMES;
-      log.info("Player '"+player.getName()+"' gets '"+addPoints+"' pick points for the next game");
-      player.addPickPoints(addPoints);
+  /**
+   * Get a player from the enlisted ones of today
+   *
+   * @param index
+   * @return
+   */
+  public Player getPlayer(int index){
+    if (index < 0 || index >= playersForToday.size()) {
+      return null;
     }
+
+    return playersForToday.get(index);
   }
 
 
-  public int getNumberOfPlayers() {
+
+  public List<Player> getPlayersForToday() {
+    return playersForToday;
+  }
+
+  public int getNumberOfPlayersForToday() {
     return playersForToday.size();
   }
+
+
+
+  //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  // Methods for the games
+  //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
   /**
    * When a game is finished,
@@ -96,23 +127,7 @@ public class TournamentDay {
     teamB.getPlayer_2().gamePlayed();
   }
 
-  /**
-   * Get a player from the enlisted ones of today
-   *
-   * @param index
-   * @return
-   */
-  public Player getPlayer(int index){
-    if (index < 0 || index >= playersForToday.size()) {
-      return null;
-    }
 
-    return playersForToday.get(index);
-  }
-
-  public List<Player> getPlayersForToday() {
-    return playersForToday;
-  }
 
   public Game getLastGame(){
     int gamesTodayPlayed = gamesToday.size();
@@ -123,13 +138,30 @@ public class TournamentDay {
     return null;
   }
 
-  public int getNumberOfPlayersForToday() {
-    return playersForToday.size();
-  }
+
 
   public int getNumberOfGamesPlayedToday() {
     return gamesToday.size();
   }
+
+
+
+  public void calculatePickPointsForNumberOfGamesForEachPlayer() {
+    Player player;
+    int addPoints = 0;
+
+    for ( int i=0;i<playersForToday.size();i++) {
+      player = getPlayer(i);
+      addPoints = (getNumberOfGamesPlayedToday()-player.getGamesPlayedToday()) * PICK_POINT_WEIGHT_FOR_NUMBER_OF_GAMES;
+      log.info("Player '"+player.getName()+"' gets '"+addPoints+"' pick points for the next game");
+      player.addPickPoints(addPoints);
+    }
+  }
+
+
+  //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+  // Methods for Validation
+  //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 
   /**
    * At least four players should participate in a tournament day

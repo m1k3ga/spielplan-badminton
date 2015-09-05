@@ -4,7 +4,9 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 /**
- * Created by m1k3ga on 09.05.15.
+ * Calculate a key for a hash map which based on id's from paramater
+ * The key for (id1,id2) is the same as for (id2,id1).
+ * Therefor mixed id's will always result in the same hash map key
  */
 public class KeyHandling {
   private static final Logger log = LogManager.getLogger(KeyHandling.class);

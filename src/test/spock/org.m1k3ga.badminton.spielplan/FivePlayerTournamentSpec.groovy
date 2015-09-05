@@ -18,7 +18,7 @@ class FivePlayerTournamentSpec extends Specification {
         td.addPlayer(new Player("Thomas"));
 
         when: "One game is played"
-        CalculateGame cg = new CalculateGame(td);
+        GamePairingCalculator cg = new GamePairingCalculator(td.getPlayersForToday(), td.getNumberOfGamesPlayedToday());
         GamePairing gp1 = cg.getNewGamePairing();
         Game game = new Game(gp1);
         game.setScoreTeamA(21);
@@ -42,7 +42,7 @@ class FivePlayerTournamentSpec extends Specification {
         td.addPlayer(new Player("Thomas"));
 
         when: "play five games"
-        CalculateGame cg = new CalculateGame(td);
+        GamePairingCalculator cg = new GamePairingCalculator(td.getPlayersForToday(), td.getNumberOfGamesPlayedToday());
         GamePairing gp1 = cg.getNewGamePairing();
 
         // TODO make for loop

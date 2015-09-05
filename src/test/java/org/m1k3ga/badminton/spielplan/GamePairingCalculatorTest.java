@@ -3,14 +3,13 @@ package org.m1k3ga.badminton.spielplan;
 import org.junit.Test;
 import org.m1k3ga.badminton.Player;
 import org.m1k3ga.badminton.exception.GameException;
-import org.m1k3ga.badminton.spielplan.metrics.Metrics;
 
 import static junit.framework.TestCase.assertTrue;
 
 /**
  * Created by m1k3ga on 16.05.15.
  */
-public class CalculateGameTest {
+public class GamePairingCalculatorTest {
 
   @Test
   public void getBalancedGamePairing() throws GameException {
@@ -18,7 +17,7 @@ public class CalculateGameTest {
     // GIVEN :
     // A tournament day with five players
     final TournamentDay td = init();
-    final CalculateGame cg = new CalculateGame(td);
+    final GamePairingCalculator cg = new GamePairingCalculator(td.getPlayersForToday(), td.getNumberOfGamesPlayedToday());
 
     // WHEN :
     // We want a new game pairing
@@ -31,12 +30,11 @@ public class CalculateGameTest {
     assertTrue(playerA1.isEqual(new Player("Mike")));
     assertTrue(playerA2.isEqual(new Player("Zaheed")));
 
-    // TODO: At the moment the first team of the remaing teams is picked, not due to pickPoints
     final Team teamB = gp.getTeamB();
     final Player playerB1 = teamB.getPlayer_1();
     final Player playerB2 = teamB.getPlayer_2();
-    assertTrue(playerB1.isEqual(new Player("Bü")));
-    assertTrue(playerB2.isEqual(new Player("David")));
+    assertTrue(playerB1.isEqual(new Player("Sandro")));
+    assertTrue(playerB2.isEqual(new Player("Thomas")));
 
   }
 
@@ -91,41 +89,5 @@ public class CalculateGameTest {
     return td;
   }
 
-
-  private TournamentDay initTournamentDayWithFivePlayers() {
-    TournamentDay td = new TournamentDay();
-
-    // Player 0 : Played already 4 games
-    Metrics m5 = new Metrics();
-    m5.gamePlayed();
-    m5.gamePlayed();
-    m5.gamePlayed();
-    m5.gamePlayed();
-    td.addPlayer(new Player("Sandro",m5));
-
-    // Player 1 : Played no games so far
-    Metrics m1 = new Metrics();
-    td.addPlayer(new Player("Bü",m1));
-
-    // Player 2 : Played 3 games so far
-    Metrics m4 = new Metrics();
-    m4.gamePlayed();
-    m4.gamePlayed();
-    m4.gamePlayed();
-    td.addPlayer(new Player("Thomas",m4));
-
-    // Player 3 : Played 1 game so far
-    Metrics m2 = new Metrics();
-    m2.gamePlayed();
-    td.addPlayer(new Player("Ingo", m2));
-
-    // Player 4 : Played 2 games so far
-    Metrics m3 = new Metrics();
-    m3.gamePlayed();
-    m3.gamePlayed();
-    td.addPlayer(new Player("Zaheed", m3));
-
-    return td;
-  }
 
 }

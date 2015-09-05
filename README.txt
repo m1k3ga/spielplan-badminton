@@ -1,11 +1,13 @@
 ## ToDo ##
  
 = Generell =
-  - NEXT STEPS: teamPickPoints einführen, pickTeamB auch auf pickPoints basieren lassen
-
+  - team pick points basierend auf counter matrix (anzahl zusammen gespielter spiele)
+    und nicht auf summe der pick points der spieler
   - CalculateGame -> pickTeamA wählt nach pickPoint für einzelne Spieler aus.
+    Der zweite Spieler sollte nach den Pickpoints für die Teams gewählt werden
+    sonst spielen vielleiht öfter teams zusammen von spielern die nicht oft gespielt haben
+    aber vielleicht oft zusammen gespielt haben
     ToDo: Wähle auch nach PickPoints für die Teams (punkte für spieler 1 + 2 )
-  - Gleiches für pickTeamB. Wird aktuell das erste Team aus der verbleibenden Liste gewählt
 
   - FivePlayerTournamentTest is auf @Ignore gestellt
   - Spock tests gehen nicht mehr! (Werden auf ignore gesettz und ignoriert wenn über test/java->run alltests)
@@ -28,6 +30,8 @@
  
 #  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 === LOG ===
+20150905 Refactor classes
+         Pick team B by pick points (calculated on sum of pick points of the team players)
 20150517 Added Unit test for CalculateGame
          pickTeamA now picks the two players of the team based on the pickPoints for each player (highest)
 20150515 Added Mockito. Not yet used (implicit class instantiation)

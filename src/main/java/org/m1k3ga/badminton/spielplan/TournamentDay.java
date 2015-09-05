@@ -26,8 +26,6 @@ import java.util.List;
 public class TournamentDay {
   private static final Logger log = LogManager.getLogger(TournamentDay.class);
 
-  public static final int PICK_POINT_WEIGHT_FOR_NUMBER_OF_GAMES = 10;
-
   private final List<Player> playersForToday = new ArrayList<>();
   private final List<Game> gamesToday = new ArrayList<>();
 
@@ -146,17 +144,6 @@ public class TournamentDay {
 
 
 
-  public void calculatePickPointsForNumberOfGamesForEachPlayer() {
-    Player player;
-    int addPoints = 0;
-
-    for ( int i=0;i<playersForToday.size();i++) {
-      player = getPlayer(i);
-      addPoints = (getNumberOfGamesPlayedToday()-player.getGamesPlayedToday()) * PICK_POINT_WEIGHT_FOR_NUMBER_OF_GAMES;
-      log.info("Player '"+player.getName()+"' gets '"+addPoints+"' pick points for the next game");
-      player.addPickPoints(addPoints);
-    }
-  }
 
 
   //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -

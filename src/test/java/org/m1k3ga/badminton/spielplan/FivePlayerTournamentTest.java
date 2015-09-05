@@ -27,7 +27,7 @@ public class FivePlayerTournamentTest {
     td.addPlayer(new Player("Zaheed"));
     td.addPlayer(new Player("Thomas"));
 
-    CalculateGame cg = new CalculateGame(td);
+    GamePairingCalculator cg = new GamePairingCalculator(td.getPlayersForToday(), td.getNumberOfGamesPlayedToday());
     GamePairing gp1 = cg.getNewGamePairing();
     Game game = new Game(gp1);
     game.setScoreTeamA(21);
@@ -50,7 +50,7 @@ public class FivePlayerTournamentTest {
     td.addPlayer(new Player("Zaheed"));
     td.addPlayer(new Player("Thomas"));
 
-    CalculateGame cg = new CalculateGame(td);
+    GamePairingCalculator cg = new GamePairingCalculator(td.getPlayersForToday(), td.getNumberOfGamesPlayedToday());
     GamePairing gp1 = cg.getNewGamePairing();
 
     // play games

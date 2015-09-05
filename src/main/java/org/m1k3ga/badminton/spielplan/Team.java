@@ -14,6 +14,7 @@ public class Team {
 	private final Player player_1;
 	private final Player player_2;
 
+	private int pickPoints = 0;
 	
 	public Team(Player player1, Player player2) {
 		this.player_1 = player1;
@@ -26,6 +27,14 @@ public class Team {
 
 	public Player getPlayer_2() {
 		return player_2;
+	}
+
+	public int getPickPoints() {
+		return pickPoints;
+	}
+
+	public void setPickPoints(int pickPoints) {
+		this.pickPoints = pickPoints;
 	}
 
 	/**

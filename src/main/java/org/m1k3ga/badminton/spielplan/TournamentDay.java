@@ -3,6 +3,8 @@ package org.m1k3ga.badminton.spielplan;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.m1k3ga.badminton.Player;
+import org.m1k3ga.badminton.spielplan.metrics.TeamsPlayedTogetherCountMatrix;
+import org.m1k3ga.badminton.spielplan.metrics.TeamsPlayedTogetherCountMatrixImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +31,7 @@ public class TournamentDay {
   private final List<Player> playersForToday = new ArrayList<>();
   private final List<Game> gamesToday = new ArrayList<>();
 
-  private final TournamentDayEvaluation eval = new TournamentDayEvaluation();
+  final private TeamsPlayedTogetherCountMatrix tpm = new TeamsPlayedTogetherCountMatrixImpl();
 
   //  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
   // Methods for the tournament day
@@ -101,30 +103,27 @@ public class TournamentDay {
    * @param game
    */
   public void gamePlayed(Game game) {
-    log.info("game played");
-
+    log.info("gamePlayed()");
     gamesToday.add(game);
 
     Team teamA = game.getTeamA();
-
-    // Add the team to the TeamPairingMatrix
-    eval.gamePlayed(teamA);
-
-    // Increment counter for games played today/season
-    teamA.getPlayer_1().gamePlayed();
-    teamA.getPlayer_2().gamePlayed();
-
+    gamePlayedForTeam(teamA);
 
     Team teamB = game.getTeamB();
-
-    // Add the team to the TeamPairingMatrix
-    eval.gamePlayed(teamB);
-
-    // Increment counter for games played today/season
-    teamB.getPlayer_1().gamePlayed();
-    teamB.getPlayer_2().gamePlayed();
+    gamePlayedForTeam(teamB);
   }
 
+
+
+  private void gamePlayedForTeam( Team team ) {
+    Player player1 = team.getPlayer_1();
+    Player player2 = team.getPlayer_2();
+
+    player1.gamePlayed();
+    player2.gamePlayed();
+
+    tpm.incrementPair(player1.getId(), player2.getId());
+  }
 
 
   public Game getLastGame(){

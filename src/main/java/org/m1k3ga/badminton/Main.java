@@ -5,8 +5,6 @@ import org.m1k3ga.badminton.spielplan.GamePairingCalculator;
 import org.m1k3ga.badminton.spielplan.Game;
 import org.m1k3ga.badminton.spielplan.GamePairing;
 import org.m1k3ga.badminton.spielplan.TournamentDay;
-import org.m1k3ga.badminton.spielplan.metrics.CounterMatrix;
-import org.m1k3ga.badminton.spielplan.metrics.TeamPairingMatrix;
 
 /**
  * Created by m1k3ga on 18.04.15.
@@ -24,7 +22,7 @@ public class Main {
 //    td.addPlayer(new Player("Zaheed"));
 
 
-//    TeamPairingMatrix tpm = new CounterMatrix();
+//    TeamsPlayedTogetherCountMatrix tpm = new CounterMatrix();
 //    System.out.println(tpm.toString());
 
     GamePairingCalculator calc;
@@ -59,6 +57,15 @@ public class Main {
     td.gamePlayed(game);
 
     // 4th game
+    calc = new GamePairingCalculator(td.getPlayersForToday(), td.getNumberOfGamesPlayedToday());
+    gp = calc.getNewGamePairing();
+    System.out.println("Calculated game pairing: " + gp.toString());
+    game = new Game(gp);
+    game.setScoreTeamA(23);
+    game.setScoreTeamB(21);
+    td.gamePlayed(game);
+
+    // 5th game
     calc = new GamePairingCalculator(td.getPlayersForToday(), td.getNumberOfGamesPlayedToday());
     gp = calc.getNewGamePairing();
     System.out.println("Calculated game pairing: " + gp.toString());

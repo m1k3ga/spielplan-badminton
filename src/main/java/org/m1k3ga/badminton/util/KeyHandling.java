@@ -25,7 +25,7 @@ public class KeyHandling {
       int tmp = id1;
       id1 = id2;
       id2 = tmp;
-      log.info("Switched ids (" + id1 + "," + id2 + ")");
+      log.trace("Switched ids (" + id1 + "," + id2 + ")");
     }
 
     StringBuilder sb = new StringBuilder();

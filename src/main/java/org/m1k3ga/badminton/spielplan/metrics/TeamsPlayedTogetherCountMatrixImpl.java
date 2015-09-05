@@ -2,11 +2,9 @@ package org.m1k3ga.badminton.spielplan.metrics;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import org.m1k3ga.badminton.Player;
 import org.m1k3ga.badminton.util.KeyHandling;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -17,9 +15,9 @@ import java.util.Map;
  * <p>
  * The coordinates are the ids of the player
  */
-public class CounterMatrix implements TeamPairingMatrix {
+public class TeamsPlayedTogetherCountMatrixImpl implements TeamsPlayedTogetherCountMatrix {
 
-  private static final Logger log = LogManager.getLogger(CounterMatrix.class);
+  private static final Logger log = LogManager.getLogger(TeamsPlayedTogetherCountMatrixImpl.class);
 
   private final Map<String, Integer> matrix = new HashMap<>();
 
